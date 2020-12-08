@@ -1,3 +1,5 @@
+import time
+
 input = '''acc +37
 acc -1
 nop +512
@@ -632,6 +634,7 @@ acc +17
 acc -16
 jmp +1'''
 
+st = time.time()
 oops = [l.split(' ') for l in input.split('\n')]
 oops = [(o[0], int(o[1])) for o in oops]
 nopjmp = [i for i, o in enumerate(oops) if o[0] in {'nop', 'jmp'}]
@@ -645,9 +648,7 @@ def flipnopjmp(op):
 
 for nj in nopjmp:
     ops = oops[:]
-    print('nj', nj, ops[nj])
     ops[nj] = flipnopjmp(ops[nj])
-    print('flipped', ops[nj])
 
     oldops = set()
     i = 0
@@ -668,12 +669,10 @@ for nj in nopjmp:
 
         if i in oldops:
             failinf = True
-            print('HV')
             break
 
         oldops.add(i)
-
-    print('failinf', failinf)
-    print('glob', glob)
     if not failinf:
         break
+print(time.time() -st )
+print('glob', glob)
