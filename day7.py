@@ -638,7 +638,7 @@ def traverse_sum(rulebook, target_bag):
         return 1
     rets = [bc[0] * traverse_sum(rulebook, bc[1]) for bc in target_contents]
     print('traverse_sum', target_bag, target_contents, rets, sum(rets))
-    return sum(rets)+1
+    return sum(rets) + 1
 
 
 ngold = 0
@@ -649,4 +649,4 @@ for k in rulebook:
         ngold += 1
 
 print('n', ngold)
-print('traverse_sum', 'shiny gold', traverse_sum(rulebook, 'shiny gold')-1)
+print('traverse_sum', 'shiny gold', traverse_sum(rulebook, 'shiny gold') - 1)
