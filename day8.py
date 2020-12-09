@@ -642,8 +642,7 @@ nopjmp = [i for i, o in enumerate(oops) if o[0] in {'nop', 'jmp'}]
 
 def flipnopjmp(op):
     return ('jmp' if op[0] == 'nop' else 'nop',
-            op[1]
-            )
+            op[1])
 
 
 for nj in nopjmp:
@@ -674,5 +673,5 @@ for nj in nopjmp:
         oldops.add(i)
     if not failinf:
         break
-print(time.time() -st )
+print(time.time() - st)
 print('glob', glob)
